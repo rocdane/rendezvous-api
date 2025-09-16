@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Enums\StatutProfile;
+use App\Enums\NiveauAcces;
 
 return new class extends Migration
 {
@@ -36,6 +37,21 @@ return new class extends Migration
             $table->index(['nom', 'prenom']);
             $table->index('email');
         });
+
+        Schema::create('profile_administrateurs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
+            $table->enum('niveau_acces', NiveauAcces::values())->default(NiveauAcces::MODERATEUR->value);
+            $table->json('services_gerees')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('profile_utilisateurs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
+            $table->json('specialites')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -44,5 +60,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('profiles');
+        Schema::dropIfExists('profile_administrateurs');
+        Schema::dropIfExists('profile_utilisateurs');
     }
 };

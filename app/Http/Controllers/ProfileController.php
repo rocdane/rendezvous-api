@@ -21,21 +21,22 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all();
-        return response()->json($profiles->map(fn($p) => $p->toBasicArray()));
-    }
-    
-    /*public function index(Request $request)
-    {
-        $criteres = $request->only(['type', 'statut', 'search', 'ville', 'sort_by', 'sort_order']);
+        $profiles = ProfileFactory::findAll();
         
-        $profiles = $this->profileService->rechercherProfils($criteres);
+        /*$criteres = $request->only(['type', 'statut', 'search', 'ville', 'sort_by', 'sort_order']);
+        
+        $profiles = $this->profileService->rechercherProfils([
+            'type' => 'utilisateur',
+            'statut' => StatutProfile::ACTIF,
+            'sort_by' => 'created_at',
+            'sort_order' => 'desc'
+        ]);*/
         
         return response()->json([
             'profiles' => $profiles->map(fn($p) => $p->toBasicArray()),
             'total' => $profiles->count()
         ]);
-    }*/
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -95,7 +96,7 @@ class ProfileController extends Controller
             'date_naissance' => 'nullable|date',
         ]);
 
-        $utilisateur = $this->profileService->updateProfile($profile, $validated);
+        $utilisateur = $this->profileService->mettreAJourProfil($profile, $validated);
         
         return response()->json([
             'message' => 'Profile mis à jour avec succès',

@@ -5,6 +5,17 @@ use App\Enums\StatutProfile;
 
 class ProfileUtilisateur extends Profile
 {
+    protected $attributes = [
+        'type' => 'utilisateur',
+    ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('type', function ($query) {
+            $query->where('type', 'utilisateur');
+        });
+    }
+    
     public function getTypeProfile(): string
     {
         return 'utilisateur';

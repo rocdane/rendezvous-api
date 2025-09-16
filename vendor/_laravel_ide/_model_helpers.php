@@ -1254,6 +1254,18 @@ namespace App\Models {
     /**
      * App\Models\Permission
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string|null $action
+     * @property string|null $ressource
+     * @property string $nom
+     * @property int $id
+     * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission whereNom($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission whereRessource($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission whereAction($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Permission>|Permission query()
@@ -1557,6 +1569,20 @@ namespace App\Models {
     /**
      * App\Models\Preference
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property bool $notifications_sms
+     * @property bool $notifications_email
+     * @property string $timezone
+     * @property string $langue
+     * @property int $id
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereLangue($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereTimezone($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereNotificationsEmail($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereNotificationsSms($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Preference>|Preference query()
@@ -1860,12 +1886,50 @@ namespace App\Models {
     /**
      * App\Models\ProfileAdministrateur
      *
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int|null $preference_id
+     * @property int|null $user_id
+     * @property array|null $metadata
+     * @property string $pays
+     * @property string|null $code_postal
+     * @property string|null $ville
+     * @property string|null $adresse
+     * @property \Illuminate\Support\Carbon|null $date_naissance
+     * @property string|null $description
+     * @property string|null $photo
+     * @property \App\Enums\StatutProfile $statut
+     * @property string $prenom
+     * @property string $nom
+     * @property string $type
+     * @property int $id
+     * @property-read mixed $email
+     * @property-read mixed $telephone
      * @property-read mixed $nom_complet
      * @property-read mixed $initiales
      * @property-read mixed $age
      * @property-read mixed $adresse_complete
      * @property-read \App\Models\User $user
      * @property-read \App\Models\Preference $preference
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereNom($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur wherePrenom($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereStatut($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur wherePhoto($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereDateNaissance($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereAdresse($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereVille($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereCodePostal($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur wherePays($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereMetadata($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereUserId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur wherePreferenceId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur whereDeletedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur actifs()
      * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur inactifs()
      * @method static \Illuminate\Database\Eloquent\Builder<ProfileAdministrateur>|ProfileAdministrateur editables()
@@ -2173,12 +2237,50 @@ namespace App\Models {
     /**
      * App\Models\ProfileUtilisateur
      *
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int|null $preference_id
+     * @property int|null $user_id
+     * @property array|null $metadata
+     * @property string $pays
+     * @property string|null $code_postal
+     * @property string|null $ville
+     * @property string|null $adresse
+     * @property \Illuminate\Support\Carbon|null $date_naissance
+     * @property string|null $description
+     * @property string|null $photo
+     * @property \App\Enums\StatutProfile $statut
+     * @property string $prenom
+     * @property string $nom
+     * @property string $type
+     * @property int $id
+     * @property-read mixed $email
+     * @property-read mixed $telephone
      * @property-read mixed $nom_complet
      * @property-read mixed $initiales
      * @property-read mixed $age
      * @property-read mixed $adresse_complete
      * @property-read \App\Models\User $user
      * @property-read \App\Models\Preference $preference
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereNom($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur wherePrenom($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereStatut($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur wherePhoto($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereDateNaissance($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereAdresse($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereVille($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereCodePostal($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur wherePays($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereMetadata($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereUserId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur wherePreferenceId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur whereDeletedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur actifs()
      * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur inactifs()
      * @method static \Illuminate\Database\Eloquent\Builder<ProfileUtilisateur>|ProfileUtilisateur editables()
@@ -2486,6 +2588,16 @@ namespace App\Models {
     /**
      * App\Models\Specialite
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string|null $description
+     * @property string $nom
+     * @property int $id
+     * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite whereNom($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Specialite>|Specialite query()

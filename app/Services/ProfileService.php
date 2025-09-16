@@ -1,5 +1,6 @@
 <?php
 namespace App\Services;
+
 use App\Models\Profile;
 use App\Enums\StatutProfile;
 use Illuminate\Support\Facades\DB;
@@ -122,9 +123,8 @@ class ProfileService
     {
         // Envoyer email de bienvenue, créer dossiers, etc.
         match ($profile->getTypeProfile()) {
-            'client' => $this->onClientCreated($profile),
-            'prestataire' => $this->onPrestataireCreated($profile),
-            'admin' => $this->onAdminCreated($profile),
+            'utilisateur' => $this->onUtilisateurCreated($profile),
+            'administrateur' => $this->onAdministrateurCreated($profile),
         };
     }
 
@@ -165,17 +165,12 @@ class ProfileService
     }
 
     // Méthodes spécifiques par type de profil
-    private function onClientCreated(Profile $client): void
+    private function onUtilisateurCreated(Profile $client): void
     {
-        // Logique spécifique aux clients
+        // Logique spécifique aux utilisateurs
     }
 
-    private function onPrestataireCreated(Profile $prestataire): void
-    {
-        // Créer profil public, initialiser disponibilités, etc.
-    }
-
-    private function onAdminCreated(Profile $admin): void
+    private function onAdministrateurCreated(Profile $admin): void
     {
         // Notifier les super admins, etc.
     }

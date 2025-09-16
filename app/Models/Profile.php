@@ -12,6 +12,8 @@ abstract class Profile extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'profiles';
+
     protected $fillable = [
         'user_id',
         'nom',
@@ -30,6 +32,10 @@ abstract class Profile extends Model
         'preference_id'
     ];
 
+    protected $attributes = [
+        'statut' => StatutProfile::EN_ATTENTE,
+    ];
+    
     protected function casts(): array
     {
         return [
@@ -43,9 +49,31 @@ abstract class Profile extends Model
         ];
     }
 
-    protected $attributes = [
-        'statut' => StatutProfile::EN_ATTENTE,
-    ];
+    public function newFromBuilder($attributes = [], $connection = null)
+    {
+        $attributes = (array) $attributes;
+        
+        if (!empty($attributes['type'])) {
+            switch ($attributes['type']) {
+                case 'administrateur':
+                    $model = new ProfileAdministrateur();
+                    break;
+                case 'utilisateur':
+                    $model = new ProfileUtilisateur();
+                    break;
+                default:
+                    $model = new static();
+            }
+            
+            $model->exists = true;
+            $model->setRawAttributes($attributes, true);
+            $model->setConnection($connection ?: $this->getConnectionName());
+            
+            return $model;
+        }
+        
+        return parent::newFromBuilder($attributes, $connection);
+    }
 
     public function user()
     {
