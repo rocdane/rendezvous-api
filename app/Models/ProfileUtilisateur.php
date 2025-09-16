@@ -2,9 +2,12 @@
 
 namespace App\Models;
 use App\Enums\StatutProfile;
+use App\Contracts\ProfileBehavior;
 
 class ProfileUtilisateur extends Profile
 {
+    use ProfileBehavior;
+    
     protected $attributes = [
         'type' => 'utilisateur',
     ];
@@ -15,7 +18,12 @@ class ProfileUtilisateur extends Profile
             $query->where('type', 'utilisateur');
         });
     }
-    
+
+    public function getSpecialites()
+    {
+        return $this->metadata['specialites'] ?? [];
+    }
+
     public function getTypeProfile(): string
     {
         return 'utilisateur';

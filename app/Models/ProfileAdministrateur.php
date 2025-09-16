@@ -2,9 +2,12 @@
 
 namespace App\Models;
 use App\Enums\StatutProfile;
+use App\Contracts\ProfileBehavior;
 
 class ProfileAdministrateur extends Profile
 {
+    use ProfileBehavior;
+    
     protected $attributes = [
         'type' => 'administrateur',
     ];
@@ -14,6 +17,11 @@ class ProfileAdministrateur extends Profile
         static::addGlobalScope('type', function ($query) {
             $query->where('type', 'administrateur');
         });
+    }
+    
+    public function getNiveauAcces()
+    {
+        return $this->metadata['niveau_acces'] ?? 'moderateur';
     }
     
     public function getTypeProfile(): string

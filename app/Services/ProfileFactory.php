@@ -3,18 +3,20 @@
 namespace App\Services;
 
 use App\Models\Profile;
-use App\Models\ProfileUtilisateur;
 use App\Models\ProfileAdministrateur;
+use App\Models\ProfileUtilisateur;
 use InvalidArgumentException;
-use App\Enums\StatutProfile;
 
 class ProfileFactory
 {
+    /**
+     * Crée un nouveau profil selon le type
+     */
     public static function create(string $type, array $data): Profile
     {
         return match ($type) {
-            'utilisateur' => ProfileUtilisateur::create(array_merge($data, ['type' => 'utilisateur'])),
-            'administrateur' => ProfileAdministrateur::create(array_merge($data, ['type' => 'administrateur'])),
+            'utilisateur' => Profile::create(array_merge($data, ['type' => 'utilisateur'])),
+            'administrateur' => Profile::create(array_merge($data, ['type' => 'administrateur'])),
             default => throw new InvalidArgumentException("Type de profil inconnu : {$type}")
         };
     }
@@ -26,13 +28,14 @@ class ProfileFactory
     {
         // Récupère le profil avec son type depuis la base
         $profileData = \DB::table('profiles')->where('id', $id)->first();
-        
-        if (!$profileData) {
+
+        if (! $profileData) {
             return null;
         }
-        
+
         // Retourne l'instance du bon type
         $modelClass = self::getModelClass($profileData->type);
+
         return $modelClass::find($id);
     }
 
@@ -42,9 +45,10 @@ class ProfileFactory
     public static function findAll(): \Illuminate\Support\Collection
     {
         $profiles = \DB::table('profiles')->get();
-        
+
         return $profiles->map(function ($profileData) {
             $modelClass = self::getModelClass($profileData->type);
+
             return $modelClass::find($profileData->id);
         });
     }

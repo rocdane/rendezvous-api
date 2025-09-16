@@ -112,7 +112,7 @@ class PasswordGenerator
             'grab', 'gray', 'grew', 'grid', 'grow', 'gulf', 'hair', 'half', 'hall', 'hand',
             'hang', 'hard', 'harm', 'hate', 'have', 'head', 'hear', 'heat', 'held', 'hell',
             'help', 'here', 'hero', 'hide', 'high', 'hill', 'hint', 'hire', 'hold', 'hole',
-            'holy', 'home', 'hope', 'host', 'hour', 'huge', 'hung', 'hunt', 'hurt', 'idea'
+            'holy', 'home', 'hope', 'host', 'hour', 'huge', 'hung', 'hunt', 'hurt', 'idea',
         ];
 
         $selectedWords = [];
@@ -235,7 +235,7 @@ class PasswordGenerator
         return [
             'score' => $score,
             'level' => $level,
-            'feedback' => $feedback
+            'feedback' => $feedback,
         ];
     }
 
@@ -249,7 +249,7 @@ class PasswordGenerator
 
         return [
             'password' => $password,
-            'hash' => $hash
+            'hash' => $hash,
         ];
     }
 }

@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Services;
 
-use App\Models\Profile;
 use App\Enums\StatutProfile;
+use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
 
 class ProfileService
@@ -14,12 +15,20 @@ class ProfileService
     {
         return DB::transaction(function () use ($type, $data) {
             $profile = ProfileFactory::create($type, $data);
-            
+
             // Actions post-création selon le type
             $this->onProfileCreated($profile);
-            
+
             return $profile;
         });
+    }
+
+    /**
+     * Obtenir un profil
+     */
+    public function obtenirProfile(Profile $profile): Profile
+    {
+        return ProfileFactory::find($profile->id);
     }
 
     /**
@@ -29,10 +38,10 @@ class ProfileService
     {
         return DB::transaction(function () use ($profile, $data) {
             $profile->update($data);
-            
+
             // Actions post-mise à jour
             $this->onProfileUpdated($profile);
-            
+
             return $profile->refresh();
         });
     }
@@ -40,22 +49,22 @@ class ProfileService
     /**
      * Changer le statut d'un profil
      */
-    public function changerStatut(Profile $profile, StatutProfile $nouveauStatut, string $raison = null): bool
+    public function changerStatut(Profile $profile, StatutProfile $nouveauStatut, ?string $raison = null): bool
     {
         $ancienStatut = $profile->statut;
-        
+
         return DB::transaction(function () use ($profile, $nouveauStatut, $ancienStatut, $raison) {
             $profile->statut = $nouveauStatut;
             $success = $profile->save();
-            
+
             if ($success) {
                 // Logger le changement de statut
                 $this->loggerChangementStatut($profile, $ancienStatut, $nouveauStatut, $raison);
-                
+
                 // Actions spécifiques selon le nouveau statut
                 $this->onStatutChanged($profile, $nouveauStatut);
             }
-            
+
             return $success;
         });
     }
@@ -66,29 +75,29 @@ class ProfileService
     public function rechercherProfils(array $criteres): \Illuminate\Database\Eloquent\Collection
     {
         $query = Profile::query();
-        
+
         // Filtres
-        if (!empty($criteres['type'])) {
+        if (! empty($criteres['type'])) {
             $query->where('type', $criteres['type']);
         }
-        
-        if (!empty($criteres['statut'])) {
+
+        if (! empty($criteres['statut'])) {
             $query->where('statut', $criteres['statut']);
         }
-        
-        if (!empty($criteres['search'])) {
+
+        if (! empty($criteres['search'])) {
             $query->search($criteres['search']);
         }
-        
-        if (!empty($criteres['ville'])) {
+
+        if (! empty($criteres['ville'])) {
             $query->where('ville', 'like', "%{$criteres['ville']}%");
         }
-        
+
         // Tri
         $sortBy = $criteres['sort_by'] ?? 'nom';
         $sortOrder = $criteres['sort_order'] ?? 'asc';
         $query->orderBy($sortBy, $sortOrder);
-        
+
         return $query->get();
     }
 
@@ -100,19 +109,19 @@ class ProfileService
         return [
             'total' => Profile::count(),
             'par_type' => Profile::select('type', DB::raw('count(*) as count'))
-                               ->groupBy('type')
-                               ->pluck('count', 'type')
-                               ->toArray(),
+                ->groupBy('type')
+                ->pluck('count', 'type')
+                ->toArray(),
             'par_statut' => Profile::select('statut', DB::raw('count(*) as count'))
-                                 ->groupBy('statut')
-                                 ->get()
-                                 ->mapWithKeys(fn($item) => [$item->statut->value => $item->count])
-                                 ->toArray(),
+                ->groupBy('statut')
+                ->get()
+                ->mapWithKeys(fn ($item) => [$item->statut->value => $item->count])
+                ->toArray(),
             'actifs' => Profile::actifs()->count(),
             'inactifs' => Profile::inactifs()->count(),
             'nouveaux_ce_mois' => Profile::whereMonth('created_at', now()->month)
-                                       ->whereYear('created_at', now()->year)
-                                       ->count(),
+                ->whereYear('created_at', now()->year)
+                ->count(),
         ];
     }
 

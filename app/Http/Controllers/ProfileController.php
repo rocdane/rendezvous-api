@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Enums\StatutProfile;
 use App\Models\Profile;
-use App\Models\ProfileUtilisateur;
-use App\Models\ProfileAdministrateur;
 use App\Services\ProfileService;
-use App\Services\ProfileFactory;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -19,22 +16,23 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $profiles = ProfileFactory::findAll();
-        
-        /*$criteres = $request->only(['type', 'statut', 'search', 'ville', 'sort_by', 'sort_order']);
-        
-        $profiles = $this->profileService->rechercherProfils([
-            'type' => 'utilisateur',
+        $criteres = $request->only(['type', 'statut', 'ville', 'sort_by', 'sort_order']);
+
+        $criteresAvecDefauts = array_merge([
+            'type' => null,
             'statut' => StatutProfile::ACTIF,
             'sort_by' => 'created_at',
-            'sort_order' => 'desc'
-        ]);*/
-        
+            'sort_order' => 'desc',
+        ], array_filter($criteres));
+
+        $profiles = $this->profileService->rechercherProfils($criteresAvecDefauts);
+
         return response()->json([
-            'profiles' => $profiles->map(fn($p) => $p->toBasicArray()),
-            'total' => $profiles->count()
+            'profiles' => $profiles->map(fn ($p) => $p->toBasicArray()),
+            'total' => $profiles->count(),
+            'filters' => $criteresAvecDefauts,
         ]);
     }
 
@@ -63,7 +61,7 @@ class ProfileController extends Controller
 
         return response()->json([
             'message' => 'Profile créé avec succès',
-            'profile' => $utilisateur->toBasicArray()
+            'profile' => $utilisateur->toBasicArray(),
         ], 201);
     }
 
@@ -72,7 +70,12 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        $utilisateur = $this->profileService->obtenirProfile($profile);
+
+        return response()->json([
+            'message' => 'Profile existe bien',
+            'profile' => $utilisateur->toBasicArray(),
+        ], 200);
     }
 
     /**
@@ -91,16 +94,16 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'email' => 'required|email|unique:profiles,email,' . $profile->id,
+            'email' => 'required|email|unique:profiles,email,'.$profile->id,
             'telephone' => 'nullable|string',
             'date_naissance' => 'nullable|date',
         ]);
 
         $utilisateur = $this->profileService->mettreAJourProfil($profile, $validated);
-        
+
         return response()->json([
             'message' => 'Profile mis à jour avec succès',
-            'profile' => $utilisateur->toBasicArray()
+            'profile' => $utilisateur->toBasicArray(),
         ], 200);
     }
 
@@ -109,6 +112,10 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile)
     {
-        //
+        $utilisateur = $this->profileService->changerStatut($profile, StatutProfile::ARCHIVE, 'Archivé via API');
+
+        return response()->json([
+            'message' => 'Profile archivé avec succès',
+        ], 200);
     }
 }

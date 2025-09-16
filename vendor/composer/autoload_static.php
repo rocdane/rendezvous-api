@@ -20,12 +20,13 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '9d2b9fc6db0f153a0a149fefb182415e' => __DIR__ . '/..' . '/symfony/polyfill-php84/bootstrap.php',
@@ -42,7 +43,6 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -116,6 +116,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
             'ParagonIE\\ConstantTime\\' => 23,
+            'ParaTest\\' => 9,
         ),
         'N' => 
         array (
@@ -144,6 +145,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Laravel\\Prompts\\' => 16,
             'Laravel\\Pail\\' => 13,
         ),
+        'J' => 
+        array (
+            'Jean85\\' => 7,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -161,6 +166,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         array (
             'Fruitcake\\Cors\\' => 15,
             'Firebase\\JWT\\' => 13,
+            'Fidry\\CpuCoreCounter\\' => 21,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -395,6 +401,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         array (
             0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
         ),
+        'ParaTest\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brianium/paratest/src',
+        ),
         'NunoMaduro\\Collision\\' => 
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
@@ -468,6 +478,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         array (
             0 => __DIR__ . '/..' . '/laravel/pail/src',
         ),
+        'Jean85\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -505,6 +519,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Fidry\\CpuCoreCounter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fidry/cpu-core-counter/src',
         ),
         'Faker\\' => 
         array (
@@ -568,12 +586,35 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
     );
 
     public static $classMap = array (
-        'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
+        'App\\Console\\Commands\\GeneratePasswordCommand' => __DIR__ . '/../..' . '/app/Console/Commands/GeneratePasswordCommand.php',
+        'App\\Contracts\\ProfileBehavior' => __DIR__ . '/../..' . '/app/Contracts/ProfileBehavior.php',
+        'App\\Contracts\\ProfileInterface' => __DIR__ . '/../..' . '/app/Contracts/ProfileInterface.php',
+        'App\\Enums\\NiveauAcces' => __DIR__ . '/../..' . '/app/Enums/NiveauAcces.php',
+        'App\\Enums\\StatutProfile' => __DIR__ . '/../..' . '/app/Enums/StatutProfile.php',
+        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\BookingController' => __DIR__ . '/../..' . '/app/Http/Controllers/BookingController.php',
+        'App\\Http\\Controllers\\CalendarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CalendarController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/PasswordController.php',
+        'App\\Http\\Controllers\\PreferenceController' => __DIR__ . '/../..' . '/app/Http/Controllers/PreferenceController.php',
+        'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Middleware\\CorsMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/CorsMiddleware.php',
+        'App\\Models\\Availability' => __DIR__ . '/../..' . '/app/Models/Availability.php',
+        'App\\Models\\Booking' => __DIR__ . '/../..' . '/app/Models/Booking.php',
+        'App\\Models\\Calendar' => __DIR__ . '/../..' . '/app/Models/Calendar.php',
         'App\\Models\\OAuthProvider' => __DIR__ . '/../..' . '/app/Models/OAuthProvider.php',
+        'App\\Models\\Permission' => __DIR__ . '/../..' . '/app/Models/Permission.php',
+        'App\\Models\\Preference' => __DIR__ . '/../..' . '/app/Models/Preference.php',
+        'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
+        'App\\Models\\ProfileAdministrateur' => __DIR__ . '/../..' . '/app/Models/ProfileAdministrateur.php',
+        'App\\Models\\ProfileUtilisateur' => __DIR__ . '/../..' . '/app/Models/ProfileUtilisateur.php',
+        'App\\Models\\Specialite' => __DIR__ . '/../..' . '/app/Models/Specialite.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Services\\OAuthService' => __DIR__ . '/../..' . '/app/Services/OAuthService.php',
+        'App\\Services\\PasswordGenerator' => __DIR__ . '/../..' . '/app/Services/PasswordGenerator.php',
+        'App\\Services\\ProfileFactory' => __DIR__ . '/../..' . '/app/Services/ProfileFactory.php',
+        'App\\Services\\ProfileService' => __DIR__ . '/../..' . '/app/Services/ProfileService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -1421,6 +1462,34 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/ValidGenerator.php',
+        'Fidry\\CpuCoreCounter\\CpuCoreCounter' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/CpuCoreCounter.php',
+        'Fidry\\CpuCoreCounter\\Diagnoser' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Diagnoser.php',
+        'Fidry\\CpuCoreCounter\\Executor\\ProcOpenExecutor' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Executor/ProcOpenExecutor.php',
+        'Fidry\\CpuCoreCounter\\Executor\\ProcessExecutor' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Executor/ProcessExecutor.php',
+        'Fidry\\CpuCoreCounter\\Finder\\CmiCmdletLogicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/CmiCmdletLogicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\CmiCmdletPhysicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/CmiCmdletPhysicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\CpuCoreFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/CpuCoreFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\CpuInfoFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/CpuInfoFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\DummyCpuCoreFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/DummyCpuCoreFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\EnvVariableFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/EnvVariableFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\FinderRegistry' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/FinderRegistry.php',
+        'Fidry\\CpuCoreCounter\\Finder\\HwLogicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/HwLogicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\HwPhysicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/HwPhysicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\LscpuLogicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/LscpuLogicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\LscpuPhysicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/LscpuPhysicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\NProcFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/NProcFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\NProcessorFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/NProcessorFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\NullCpuCoreFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/NullCpuCoreFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\OnlyInPowerShellFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/OnlyInPowerShellFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\OnlyOnOSFamilyFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/OnlyOnOSFamilyFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\ProcOpenBasedFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/ProcOpenBasedFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\SkipOnOSFamilyFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/SkipOnOSFamilyFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\WindowsRegistryLogicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/WindowsRegistryLogicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\WmicLogicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/WmicLogicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\WmicPhysicalFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/WmicPhysicalFinder.php',
+        'Fidry\\CpuCoreCounter\\Finder\\_NProcessorFinder' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/Finder/_NProcessorFinder.php',
+        'Fidry\\CpuCoreCounter\\NumberOfCpuCoreNotFound' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/NumberOfCpuCoreNotFound.php',
+        'Fidry\\CpuCoreCounter\\ParallelisationResult' => __DIR__ . '/..' . '/fidry/cpu-core-counter/src/ParallelisationResult.php',
         'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
         'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
         'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
@@ -2984,6 +3053,11 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Jean85\\Exception\\ProvidedPackageException' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Exception/ProvidedPackageException.php',
+        'Jean85\\Exception\\ReplacedPackageException' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Exception/ReplacedPackageException.php',
+        'Jean85\\Exception\\VersionMissingExceptionInterface' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Exception/VersionMissingExceptionInterface.php',
+        'Jean85\\PrettyVersions' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/PrettyVersions.php',
+        'Jean85\\Version' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Version.php',
         'Laravel\\Pail\\Console\\Commands\\PailCommand' => __DIR__ . '/..' . '/laravel/pail/src/Console/Commands/PailCommand.php',
         'Laravel\\Pail\\Contracts\\Printer' => __DIR__ . '/..' . '/laravel/pail/src/Contracts/Printer.php',
         'Laravel\\Pail\\File' => __DIR__ . '/..' . '/laravel/pail/src/File.php',
@@ -4821,6 +4895,24 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/Xml.php',
         'PHPUnit\\Util\\Xml\\Loader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/Loader.php',
         'PHPUnit\\Util\\Xml\\XmlException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Exception/XmlException.php',
+        'ParaTest\\Coverage\\CoverageMerger' => __DIR__ . '/..' . '/brianium/paratest/src/Coverage/CoverageMerger.php',
+        'ParaTest\\JUnit\\LogMerger' => __DIR__ . '/..' . '/brianium/paratest/src/JUnit/LogMerger.php',
+        'ParaTest\\JUnit\\MessageType' => __DIR__ . '/..' . '/brianium/paratest/src/JUnit/MessageType.php',
+        'ParaTest\\JUnit\\TestCase' => __DIR__ . '/..' . '/brianium/paratest/src/JUnit/TestCase.php',
+        'ParaTest\\JUnit\\TestCaseWithMessage' => __DIR__ . '/..' . '/brianium/paratest/src/JUnit/TestCaseWithMessage.php',
+        'ParaTest\\JUnit\\TestSuite' => __DIR__ . '/..' . '/brianium/paratest/src/JUnit/TestSuite.php',
+        'ParaTest\\JUnit\\Writer' => __DIR__ . '/..' . '/brianium/paratest/src/JUnit/Writer.php',
+        'ParaTest\\Options' => __DIR__ . '/..' . '/brianium/paratest/src/Options.php',
+        'ParaTest\\ParaTestCommand' => __DIR__ . '/..' . '/brianium/paratest/src/ParaTestCommand.php',
+        'ParaTest\\RunnerInterface' => __DIR__ . '/..' . '/brianium/paratest/src/RunnerInterface.php',
+        'ParaTest\\Util\\PhpstormHelper' => __DIR__ . '/..' . '/brianium/paratest/src/Util/PhpstormHelper.php',
+        'ParaTest\\WrapperRunner\\ApplicationForWrapperWorker' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/ApplicationForWrapperWorker.php',
+        'ParaTest\\WrapperRunner\\ProgressPrinterOutput' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/ProgressPrinterOutput.php',
+        'ParaTest\\WrapperRunner\\ResultPrinter' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/ResultPrinter.php',
+        'ParaTest\\WrapperRunner\\SuiteLoader' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/SuiteLoader.php',
+        'ParaTest\\WrapperRunner\\WorkerCrashedException' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/WorkerCrashedException.php',
+        'ParaTest\\WrapperRunner\\WrapperRunner' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/WrapperRunner.php',
+        'ParaTest\\WrapperRunner\\WrapperWorker' => __DIR__ . '/..' . '/brianium/paratest/src/WrapperRunner/WrapperWorker.php',
         'ParagonIE\\ConstantTime\\Base32' => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src/Base32.php',
         'ParagonIE\\ConstantTime\\Base32Hex' => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src/Base32Hex.php',
         'ParagonIE\\ConstantTime\\Base64' => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src/Base64.php',
@@ -6801,7 +6893,9 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Termwind\\ValueObjects\\Node' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Node.php',
         'Termwind\\ValueObjects\\Style' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Style.php',
         'Termwind\\ValueObjects\\Styles' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Styles.php',
-        'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
+        'Tests\\Feature\\HealthTest' => __DIR__ . '/../..' . '/tests/Feature/HealthTest.php',
+        'Tests\\Feature\\PasswordGeneratorTest' => __DIR__ . '/../..' . '/tests/Feature/PasswordGeneratorTest.php',
+        'Tests\\Feature\\ProfileServiceTest' => __DIR__ . '/../..' . '/tests/Feature/ProfileServiceTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',

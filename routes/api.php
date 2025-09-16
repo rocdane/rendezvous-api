@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/health', function () {
     return response()->json([
@@ -32,13 +32,15 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::apiResource('profiles', ProfileController::class);
+    Route::post('password/generate', [PasswordController::class, 'generate']);
+    Route::post('password/check', [PasswordController::class, 'check']);
 });
 
 // Routes protégées par Sanctum
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('bookings', BookingController::class);
     Route::apiResource('calendars', CalendarController::class);
-    
+
     Route::prefix('user')->group(function () {
         Route::get('availability', [CalendarController::class, 'getAvailability']);
         Route::put('availability', [CalendarController::class, 'updateAvailability']);

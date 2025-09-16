@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Services\PasswordGenerator;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class PasswordController extends Controller
 {
@@ -58,13 +59,13 @@ class PasswordController extends Controller
                 'success' => true,
                 'password' => $password,
                 'length' => strlen($password),
-                'strength' => $strength
-            ]);
+                'strength' => $strength,
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ], 400);
         }
     }
@@ -72,10 +73,10 @@ class PasswordController extends Controller
     /**
      * Vérifier la force d'un mot de passe
      */
-    public function checkStrength(Request $request): JsonResponse
+    public function check(Request $request): JsonResponse
     {
         $request->validate([
-            'password' => 'required|string'
+            'password' => 'required|string',
         ]);
 
         $password = $request->input('password');
@@ -84,7 +85,7 @@ class PasswordController extends Controller
         return response()->json([
             'success' => true,
             'password_length' => strlen($password),
-            'strength' => $strength
-        ]);
+            'strength' => $strength,
+        ], 200);
     }
 }
