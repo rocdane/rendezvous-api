@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "RendezVous API",
+    "description": "Collection pour tester l'API RendezVous avec authentification OAuth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "frontendUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Get Google OAuth Redirect URL",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/google/redirect",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "google", "redirect"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Microsoft OAuth Redirect URL",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/microsoft/redirect",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "microsoft", "redirect"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get GitHub OAuth Redirect URL",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/github/redirect",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "github", "redirect"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OAuth Callback - Google",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/google/callback?code=AUTHORIZATION_CODE&state=STATE_VALUE",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "google", "callback"],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "AUTHORIZATION_CODE",
+                  "description": "Code d'autorisation reçu du provider OAuth"
+                },
+                {
+                  "key": "state",
+                  "value": "STATE_VALUE",
+                  "description": "État pour prévenir les attaques CSRF"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User Info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "logout"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Management",
+      "item": [
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["user"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Script pour extraire automatiquement le token des réponses",
+          "pm.globals.set('timestamp', new Date().toISOString());"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Script pour sauvegarder automatiquement le token",
+          "if (pm.response.headers.get('Content-Type')?.includes('application/json')) {",
+          "    const responseJson = pm.response.json();",
+          "    ",
+          "    // Si la réponse contient un token, le sauvegarder",
+          "    if (responseJson.token) {",
+          "        pm.collectionVariables.set('token', responseJson.token);",
+          "        console.log('Token sauvegardé:', responseJson.token);",
+          "    }",
+          "    ",
+          "    // Log des informations utiles",
+          "    console.log('Status:', pm.response.status);",
+          "    console.log('Response:', responseJson);",
+          "}"
+        ]
+      }
+    }
+  ]
+}

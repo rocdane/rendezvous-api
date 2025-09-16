@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('oauth_providers', function (Blueprint $table) {
+        Schema::create('o_auth_providers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('provider'); // google, microsoft, github
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oauth_providers');
+        Schema::dropIfExists('o_auth_providers');
     }
 };
